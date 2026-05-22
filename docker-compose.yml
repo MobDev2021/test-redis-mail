@@ -1,0 +1,13 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: laravel-redis
+    ports:
+      - "6379:6379"
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: laravel-mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
