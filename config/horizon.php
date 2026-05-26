@@ -199,7 +199,7 @@ return [
     'defaults' => [
         'supervisor-1' => [
             'connection' => 'redis',
-            'queue' => ['default'],
+            'queue' => ['emails'],
             'balance' => 'auto',
             'autoScalingStrategy' => 'time',
             'maxProcesses' => 1,
@@ -226,7 +226,6 @@ return [
                 'maxProcesses' => 3,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
-                'queue' => ['emails'],
             ],
         ],
     ],
