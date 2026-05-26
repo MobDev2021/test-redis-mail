@@ -22,7 +22,7 @@ class SendFakeMailJob implements ShouldQueue
     // どのレコードのジョブかを一覧画面で即座に特定できる
     public function tags(): array
     {
-        return ['mail_log:' . $this->mail_log_id];
+        return ['mail_log:'.$this->mail_log_id];
     }
 
     public function handle(): void

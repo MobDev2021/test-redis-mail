@@ -113,8 +113,12 @@ class SendFakeMailJobTest extends TestCase
         $mail_log = MailLog::create(['email' => 'success@example.com']);
 
         // shouldFail を常に false に上書き → 必ず正常送信されるジョブで実行
-        $job = new class($mail_log->id) extends SendFakeMailJob {
-            protected function shouldFail(int $id): bool { return false; }
+        $job = new class($mail_log->id) extends SendFakeMailJob
+        {
+            protected function shouldFail(int $id): bool
+            {
+                return false;
+            }
         };
         $job->handle();
 
@@ -136,8 +140,12 @@ class SendFakeMailJobTest extends TestCase
         $mail_log = MailLog::create(['email' => 'fail@example.com']);
 
         // shouldFail を常に true に上書き → 必ず失敗するジョブで実行
-        $job = new class($mail_log->id) extends SendFakeMailJob {
-            protected function shouldFail(int $id): bool { return true; }
+        $job = new class($mail_log->id) extends SendFakeMailJob
+        {
+            protected function shouldFail(int $id): bool
+            {
+                return true;
+            }
         };
 
         try {

@@ -41,7 +41,7 @@ class RateLimitDemoCommand extends Command
 
     public function handle(): void
     {
-        $limit    = (int) $this->option('limit');
+        $limit = (int) $this->option('limit');
         $requests = (int) $this->option('requests');
 
         // 前回のデモのカウンターが残っている場合に備えてキャッシュクリア
@@ -59,9 +59,9 @@ class RateLimitDemoCommand extends Command
 
         for ($i = 1; $i <= $requests; $i++) {
             $executed = RateLimiter::attempt(
-                key:          'demo',
-                maxAttempts:  $limit,
-                callback:     fn() => true,
+                key: 'demo',
+                maxAttempts: $limit,
+                callback: fn () => true,
                 decaySeconds: 60
             );
 
@@ -69,13 +69,13 @@ class RateLimitDemoCommand extends Command
 
             if ($executed) {
                 $this->line(
-                    "  <info>[{$i}]</info> ✅ リクエスト通過  " .
+                    "  <info>[{$i}]</info> ✅ リクエスト通過  ".
                     "<fg=gray>残り {$remaining}/{$limit} 回</>"
                 );
             } else {
                 $wait = RateLimiter::availableIn('demo');
                 $this->line(
-                    "  <info>[{$i}]</info> 🚫 <fg=red>ブロック</> — " .
+                    "  <info>[{$i}]</info> 🚫 <fg=red>ブロック</> — ".
                     "{$wait}秒後にリセット"
                 );
             }

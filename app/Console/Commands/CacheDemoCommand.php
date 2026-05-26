@@ -68,7 +68,7 @@ class CacheDemoCommand extends Command
         // $process_b_cache はサーバー2の別プロセス — サーバー1の書き込みは届かない
         $result = $process_b_cache['user:1:name'] ?? null;
         $this->line(
-            '  [サーバー2] user:1:name を取得 → ' .
+            '  [サーバー2] user:1:name を取得 → '.
             ($result ? "<info>{$result}</info>" : '<fg=red>null（取得できない）</>')
         );
         $this->newLine();
@@ -90,7 +90,7 @@ class CacheDemoCommand extends Command
 
         $result = Cache::get('demo:user:1:name'); // サーバー2も同じRedisを参照するので取得できる
         $this->line(
-            '  [サーバー2] user:1:name を取得 → ' .
+            '  [サーバー2] user:1:name を取得 → '.
             "<info>{$result}</info> ✅"
         );
         $this->newLine();
